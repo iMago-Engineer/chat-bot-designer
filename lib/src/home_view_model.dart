@@ -81,7 +81,7 @@ class HomeViewModel extends BaseViewModel {
 
   // TODO: repliesInListToMap
   Map<Reply, Map<String, Reply>> test = {};
-  get jsonReply => turnToJson(test);
+  get jsonReply => convertReplyMapToJson(test);
 
   void addReply(DraftReply draftReply, int parentId) {
     final parentReply =
