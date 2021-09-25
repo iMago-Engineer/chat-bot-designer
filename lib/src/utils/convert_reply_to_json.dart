@@ -42,8 +42,10 @@ List<Map<String, dynamic>>? _createOnePart(Reply? reply) {
   switch (reply.type) {
     case ReplyType.template:
       if (reply.choices.isEmpty) return null;
-      if (reply.title == null) return null;
-      if (reply.title!.isEmpty) return null;
+
+      final title = (reply.title == null || reply.title!.isEmpty)
+          ? reply.text
+          : reply.title;
 
       return [
         {
@@ -51,7 +53,7 @@ List<Map<String, dynamic>>? _createOnePart(Reply? reply) {
           'altText': 'this is a button template',
           'template': {
             'type': 'buttons',
-            'title': reply.title!,
+            'title': title,
             'text': reply.text,
             'actions': _createActionPart(reply),
           },
