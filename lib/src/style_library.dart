@@ -174,3 +174,4 @@ const inCompletedTextStyle =
 Color baseColor = const Color(0xFFF5F8FA);
 Color iconColor = const Color(0xFFC2CBDA);
 Color textColor = const Color(0xFF8090AC);
+Color titleColor = const Color(0xFF4E5F7D);

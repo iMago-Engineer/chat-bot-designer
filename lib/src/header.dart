@@ -35,10 +35,10 @@ class Header extends StatelessWidget {
                   ),
                   child: Icon(Icons.menu, color: iconColor)),
               verticalMargin32(),
-              const Text(
+              Text(
                 'LINE Chat Bot Desingner',
                 style: TextStyle(
-                    color: Color(0xFF4E5F7D),
+                    color: titleColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 18.0),
               ),

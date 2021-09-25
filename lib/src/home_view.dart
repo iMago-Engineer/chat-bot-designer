@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
+import 'acount.dart';
+
 // import 'utils/create_python_script.dart';
 // import 'utils/download_script.dart'
 
@@ -22,9 +24,10 @@ class HomeView extends StatelessWidget {
         const Header(),
         Row(
           children: [
+            const Acount(),
             ChatFlowChart(
               currentReply: viewModel.replies.first,
-              maxWidth: screenSize.width,
+              maxWidth: screenSize.width * 0.75,
             ),
           ],
         )
