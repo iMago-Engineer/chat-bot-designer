@@ -1,4 +1,4 @@
-String createPythonScript() {
+String createPythonScript(String replyMessage) {
   return """
 from typing import Union
 import os, dotenv
@@ -93,26 +93,9 @@ def response_as_message_to_send(response: dict) -> Union[TextSendMessage, None]:
 # メッセージ辞書
 # *********************************************
 
-MESSAGES_DICT = {
-  "None": [
-    {
-      "type": "text",
-      "text": "メニューから選択してください。"
-    },
-  ],
-  "かぜ": [
-    {
-      "type": "text",
-      "text": "おちゃけ大好き"
-    }
-  ],
-  "おっくん": [
-    {
-      "type": "text",
-      "text": "おちゃけきらい"
-    }
-  ]
-}
+MESSAGES_DICT = """ +
+      replyMessage +
+      """
 
 
 # *********************************************

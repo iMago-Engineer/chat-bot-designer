@@ -19,7 +19,10 @@ class HomeView extends StatelessWidget {
           ElevatedButton(
             child: const Text("ダウンロード"),
             onPressed: () {
-              String script = createPythonScript();
+              // TODO: create here!
+              String replyMessage =
+                  '{ "None": [{"type": "text","text": "メニューから選択してください。"},], }';
+              String script = createPythonScript(replyMessage);
               downloadFile(script);
             },
           )
