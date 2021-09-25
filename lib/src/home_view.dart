@@ -1,34 +1,36 @@
+import 'package:chat_bot_designer/src/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stacked/stacked.dart';
 
 import 'reply_row.dart';
 import 'utils/create_python_script.dart';
 import 'utils/download_script.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
   @override
-  _HomeViewState createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('チャットボットデザインナー'), actions: <Widget>[
-        ElevatedButton(
-          child: Text("ダウンロード"),
-          onPressed: () {
-            String script = createPythonScript();
-            downloadFile(script);
-          },
-        )
-      ]),
-      body: Center(
-        child: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, _) => const ReplyRow(),
+    return ViewModelBuilder<HomeViewModel>.reactive(
+      viewModelBuilder: () => HomeViewModel(),
+      builder: (context, viewModel, child) => Scaffold(
+        appBar: AppBar(title: const Text('チャットボットデザインナー'), actions: <Widget>[
+          ElevatedButton(
+            child: const Text("ダウンロード"),
+            onPressed: () {
+              String script = createPythonScript();
+              downloadFile(script);
+            },
+          )
+        ]),
+        body: Center(
+          child: ListView.builder(
+            itemCount: 1,
+            itemBuilder: (context, rowIndex) {
+              return ReplyRow(rowIndex: rowIndex);
+            },
+          ),
         ),
       ),
     );

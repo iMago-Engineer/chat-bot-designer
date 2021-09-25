@@ -1,24 +1,31 @@
 import 'package:chat_bot_designer/services_locator.dart';
 import 'package:chat_bot_designer/src/create_reply_dialog.dart';
+import 'package:chat_bot_designer/src/home_view.dart';
+import 'package:chat_bot_designer/src/home_view_model.dart';
+import 'package:chat_bot_designer/src/models/reply.dart';
 import 'package:chat_bot_designer/src/services/navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 
-class ReplyRow extends StatelessWidget {
-  const ReplyRow({Key? key}) : super(key: key);
+class ReplyRow extends ViewModelWidget<HomeViewModel> {
+  final int rowIndex;
+
+  const ReplyRow({Key? key, required this.rowIndex}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, HomeViewModel viewModel) {
+    print(viewModel.replies[rowIndex]);
+
+    final currentRow = viewModel.replies[rowIndex];
+    final replyBoxes =
+        currentRow.map<Widget>((Reply reply) => const ReplyBox()).toList();
+    replyBoxes.add(const ReplyBoxWithPlus());
+
     return Container(
       padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: const [
-          ReplyBox(),
-          ReplyBoxWithPlus(),
-          ReplyBoxWithPlus(),
-          ReplyBoxWithPlus(),
-          ReplyBoxWithPlus(),
-        ],
+        children: replyBoxes,
       ),
     );
   }
