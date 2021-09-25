@@ -14,7 +14,8 @@ class HomeViewModel extends BaseViewModel {
       id: 0,
       type: ReplyType.template,
       trigger: '0',
-      text: '0',
+      title: 'Hello',
+      text: 'World',
       choices: [],
     )
   ];
