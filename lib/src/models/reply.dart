@@ -1,16 +1,16 @@
-import 'action.dart';
+import 'choice.dart';
 
 class Reply {
   final ReplyType type;
-  final String title;
   final String text;
-  final List<Action> actions;
+  String? title;
+  List<Choice>? choices;
 
   Reply({
     required this.type,
-    required this.title,
     required this.text,
-    required this.actions,
+    this.title,
+    this.choices,
   });
 
   @override
@@ -20,10 +20,14 @@ class Reply {
       type: $type,
       title: $title,
       text: $text,
-      actions: $actions,
+      choices: $choices,
     }
     ''';
   }
 }
 
 enum ReplyType { text, template }
+
+extension ParseToString on ReplyType {
+  String toShortString() => toString().split('.').last;
+}

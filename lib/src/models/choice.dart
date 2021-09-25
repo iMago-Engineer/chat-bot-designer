@@ -1,7 +1,7 @@
-class Action {
+class Choice {
   final String text;
 
-  Action({required this.text});
+  Choice({required this.text});
 
   @override
   String toString() => 'Action: { text: $text }';
