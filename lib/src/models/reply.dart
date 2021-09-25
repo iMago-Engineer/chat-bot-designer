@@ -1,14 +1,18 @@
 import 'choice.dart';
 
 class Reply {
+  final int id;
+  final int? parentId;
   final ReplyType type;
   final String text;
-  String? title;
-  List<Choice>? choices;
+  final String? title;
+  final List<Choice>? choices;
 
   Reply({
+    required this.id,
     required this.type,
     required this.text,
+    this.parentId,
     this.title,
     this.choices,
   });
@@ -17,6 +21,8 @@ class Reply {
   String toString() {
     return '''
     Reply: {
+      id: $id,
+      parentId: $parentId,
       type: $type,
       title: $title,
       text: $text,

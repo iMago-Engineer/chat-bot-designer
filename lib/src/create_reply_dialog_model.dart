@@ -1,3 +1,4 @@
+import 'package:chat_bot_designer/src/models/draft_reply.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -75,7 +76,13 @@ class CreateReplyDialogModel extends BaseViewModel {
       return;
     }
 
-    servicesLocator<NavigationService>()
-        .pop(Reply(type: type, title: title, text: text, choices: choices));
+    servicesLocator<NavigationService>().pop(
+      DraftReply(
+        type: type,
+        title: title,
+        text: text,
+        choices: choices,
+      ),
+    );
   }
 }
