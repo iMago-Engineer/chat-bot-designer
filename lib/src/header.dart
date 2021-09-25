@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_view_model.dart';
@@ -41,22 +42,42 @@ class Header extends ViewModelWidget<HomeViewModel> {
                   child: Icon(Icons.menu, color: iconColor)),
               verticalMargin32(),
               Text(
-                'LINE Chat Bot Desingner',
+                'LINE Chat Bot Designer',
                 style: TextStyle(
                     color: titleColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18.0),
+                    fontSize: 24.0),
               ),
               verticalMargin96(),
-              Text('Dashboard', style: TextStyle(color: textColor)),
+              Text('Dashboard',
+                  style: TextStyle(
+                      color: textColor,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold)),
               verticalMargin28(),
-              Text('Dashboard', style: TextStyle(color: textColor)),
+              Text('About',
+                  style: TextStyle(
+                      color: textColor,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold)),
               verticalMargin28(),
-              Text('Dashboard', style: TextStyle(color: textColor)),
+              Text('News',
+                  style: TextStyle(
+                      color: textColor,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold)),
               verticalMargin28(),
-              Text('Dashboard', style: TextStyle(color: textColor)),
+              Text('User Policy',
+                  style: TextStyle(
+                      color: textColor,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold)),
               verticalMargin28(),
-              Text('Dashboard', style: TextStyle(color: textColor)),
+              Text('Contacts',
+                  style: TextStyle(
+                      color: textColor,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold)),
             ],
           ),
           Container(

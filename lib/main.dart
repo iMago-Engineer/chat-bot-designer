@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'src/home_view.dart';
 import 'services_locator.dart';
@@ -16,11 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = ThemeData(
-      primaryColor: const Color(0xff06C755),
-      primarySwatch: Colors.blue,
-    );
+        primaryColor: const Color(0xff06C755),
+        primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme));
     return MaterialApp(
-      title: 'チャットボットデザインナー',
+      title: 'LINE Chat Bot Designer',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       navigatorKey: servicesLocator<NavigationService>().navigatorKey,
