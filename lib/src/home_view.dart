@@ -32,22 +32,6 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
-      //   appBar: AppBar(
-      //       backgroundColor: Theme.of(context).primaryColor,
-      //       title: const Text('チャットボットデザインナー'),
-      //       actions: <Widget>[
-      //         ElevatedButton(
-      //           child: const Text('ダウンロード'),
-      //           onPressed: viewModel.downloadChatFlowChart,
-      //         )
-      //       ]),
-      //   body: Center(
-      //     child: ChatFlowChart(
-      //       currentReply: viewModel.replies.first,
-      //       maxWidth: screenSize.width,
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
