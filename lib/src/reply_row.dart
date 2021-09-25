@@ -17,8 +17,9 @@ class ReplyRow extends ViewModelWidget<HomeViewModel> {
     print(viewModel.replies[rowIndex]);
 
     final currentRow = viewModel.replies[rowIndex];
-    final replyBoxes =
-        currentRow.map<Widget>((Reply reply) => const ReplyBox()).toList();
+    final replyBoxes = currentRow
+        .map<Widget>((Reply reply) => ReplyBox(reply: reply))
+        .toList();
     replyBoxes.add(const ReplyBoxWithPlus());
 
     return Container(
@@ -32,7 +33,9 @@ class ReplyRow extends ViewModelWidget<HomeViewModel> {
 }
 
 class ReplyBox extends StatelessWidget {
-  const ReplyBox({Key? key}) : super(key: key);
+  final Reply reply;
+
+  const ReplyBox({Key? key, required this.reply}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +43,10 @@ class ReplyBox extends StatelessWidget {
       color: Colors.green,
       height: 80,
       width: 80,
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(reply.text),
+      ),
     );
   }
 }
