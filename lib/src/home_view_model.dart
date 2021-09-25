@@ -1,88 +1,31 @@
-import 'package:chat_bot_designer/src/models/choice.dart';
-import 'package:chat_bot_designer/src/models/draft_reply.dart';
-import 'package:chat_bot_designer/src/models/reply.dart';
 import 'package:stacked/stacked.dart';
 
-// final testData = [
-//   Reply(
-//     id: 0,
-//     type: ReplyType.template,
-//     text: '',
-//     choices: [Choice(text: '')],
-//   ),
-//   Reply(
-//     id: 1,
-//     parentId: 0,
-//     type: ReplyType.template,
-//     text: '1',
-//     choices: [Choice(text: '1-2'), Choice(text: '1-6')],
-//   ),
-//   Reply(
-//     id: 2,
-//     parentId: 1,
-//     type: ReplyType.template,
-//     text: '2',
-//     choices: [Choice(text: '2-3')],
-//   ),
-//   Reply(
-//     id: 3,
-//     parentId: 2,
-//     type: ReplyType.text,
-//     text: '3',
-//   ),
-//   Reply(
-//     id: 4,
-//     parentId: 0,
-//     type: ReplyType.template,
-//     text: '4',
-//     choices: [Choice(text: '4-5')],
-//   ),
-//   Reply(
-//     id: 5,
-//     parentId: 4,
-//     type: ReplyType.template,
-//     text: '5',
-//     choices: [Choice(text: '5-7')],
-//   ),
-//   Reply(
-//     id: 6,
-//     parentId: 1,
-//     type: ReplyType.text,
-//     text: '6',
-//   ),
-//   Reply(
-//     id: 7,
-//     parentId: 5,
-//     type: ReplyType.text,
-//     text: '7',
-//   )
-// ];
-// var defaultReplies = [
-//   Reply(
-//     id: 0,
-//     type: ReplyType.template,
-//     trigger: '',
-//     text: '',
-//     choices: [],
-//   )
-// ];
+import 'models/choice.dart';
+import 'models/draft_reply.dart';
+import 'models/reply.dart';
+import 'utils/convert_reply_to_json.dart';
+import 'utils/create_python_script.dart';
+import 'utils/download_script.dart';
+import 'utils/reply_list_to_map.dart';
 
 class HomeViewModel extends BaseViewModel {
   List<Reply> replies = [
     Reply(
       id: 0,
       type: ReplyType.template,
-      trigger: '',
-      text: '',
+      trigger: '0',
+      text: '0',
       choices: [],
     )
   ];
 
   void addReply(DraftReply draftReply, int parentId) {
+    // 自分のトリガーを、親の choice に追加する
     final parentReply =
         replies.where((element) => element.id == parentId).first;
     parentReply.choices.add(Choice(text: draftReply.trigger));
 
+    // 自分を replies のリストに追加する
     final newReply = Reply(
       id: replies.length,
       parentId: parentId,
@@ -92,9 +35,15 @@ class HomeViewModel extends BaseViewModel {
       text: draftReply.text,
       choices: [],
     );
-
     replies.add(newReply);
 
     notifyListeners();
+  }
+
+  void downloadChatFlowChart() {
+    final replyMap = repliesListToMap(replies);
+    final replyMessage = convertReplyMapToJson(replyMap);
+    String pythonScript = createPythonScript(replyMessage);
+    downloadFile(pythonScript);
   }
 }
