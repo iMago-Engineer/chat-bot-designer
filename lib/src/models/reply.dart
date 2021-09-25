@@ -4,17 +4,19 @@ class Reply {
   final int id;
   final int? parentId;
   final ReplyType type;
+  final String trigger;
   final String text;
   final String? title;
-  final List<Choice>? choices;
+  List<Choice> choices;
 
   Reply({
     required this.id,
     required this.type,
     required this.text,
+    required this.trigger,
+    required this.choices,
     this.parentId,
     this.title,
-    this.choices,
   });
 
   @override
@@ -24,6 +26,7 @@ class Reply {
       id: $id,
       parentId: $parentId,
       type: $type,
+      trigger: $trigger,
       title: $title,
       text: $text,
       choices: $choices,

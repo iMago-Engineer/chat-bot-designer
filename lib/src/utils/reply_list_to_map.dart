@@ -10,7 +10,7 @@ Map<Reply, Map<String, Reply>> repliesListToMap(List<Reply> replies) {
     Map<String, Reply> childMap = {};
     for (int i = 0; i < children.length; i++) {
       final childReply = children[i];
-      childMap[childReply.id.toString()] = childReply;
+      childMap[currentReply.choices[i].toString()] = childReply;
     }
 
     repliesMap[currentReply] = childMap;
