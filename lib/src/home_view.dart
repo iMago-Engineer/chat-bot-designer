@@ -1,5 +1,7 @@
 import 'package:chat_bot_designer/src/chat_flow_chart.dart';
 import 'package:chat_bot_designer/src/home_view_model.dart';
+import 'package:chat_bot_designer/src/utils/convert_reply_to_json.dart';
+import 'package:chat_bot_designer/src/utils/reply_list_to_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
@@ -24,7 +26,15 @@ class HomeView extends StatelessWidget {
               ElevatedButton(
                 child: const Text("ダウンロード"),
                 onPressed: () {
-                  String script = createPythonScript(viewModel.jsonReply);
+                  // TODO: create here!
+                  final replyMap = repliesListToMap(viewModel.replies);
+                  print(replyMap);
+                  final replyMessage = convertReplyMapToJson(replyMap);
+                  print(replyMessage);
+
+                  // String replyMessage =
+                  //     '{ "None": [{"type": "text","text": "メニューから選択してください。"},], }';
+                  String script = createPythonScript(replyMessage);
                   downloadFile(script);
                 },
               )
@@ -34,12 +44,6 @@ class HomeView extends StatelessWidget {
             currentReply: viewModel.replies.first,
             maxWidth: screenSize.width,
           ),
-          // child: ListView.builder(
-          //   itemCount: 1,
-          //   itemBuilder: (context, rowIndex) {
-          //     return ReplyRow(rowIndex: rowIndex);
-          //   },
-          // ),
         ),
       ),
     );

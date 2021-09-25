@@ -5,7 +5,6 @@ import 'package:stacked/stacked.dart';
 import 'dialog_templates.dart';
 import 'style_library.dart';
 import 'create_reply_dialog_model.dart';
-import 'models/choice.dart';
 
 class CreateReplyDialog extends StatelessWidget {
   const CreateReplyDialog({Key? key}) : super(key: key);
@@ -23,24 +22,43 @@ class CreateReplyDialog extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  if (viewModel.showTitleInput)
-                    _TitleInput(screenSize: screenSize),
+                  _TriggerInput(screenSize: screenSize),
+                  _TitleInput(screenSize: screenSize),
                   _TextInput(screenSize: screenSize),
-                  _ActionInput(screenSize: screenSize),
                 ],
               ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: viewModel.choices.map<Widget>((Choice choice) {
-                  return _ChoiceChip(choice: choice);
-                }).toList(),
-              )
             ],
           ),
         ),
         leftButton: const _CancelButton(),
         rightButton: const _CreateButton(),
+      ),
+    );
+  }
+}
+
+class _TriggerInput extends ViewModelWidget<CreateReplyDialogModel> {
+  const _TriggerInput({
+    Key? key,
+    required this.screenSize,
+  }) : super(key: key);
+
+  final Size screenSize;
+
+  @override
+  Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
+    return Container(
+      constraints: BoxConstraints(maxWidth: screenSize.width * 0.4),
+      child: TextFormField(
+        controller: viewModel.triggerInputController,
+        onChanged: viewModel.setTrigger,
+        decoration: InputDecoration(
+          border: const OutlineInputBorder(borderSide: BorderSide()),
+          contentPadding: formPadding,
+          labelText: 'どんな返信が来た？ *',
+          hintText: 'はい',
+          hintStyle: hintTextStyle,
+        ),
       ),
     );
   }
@@ -64,7 +82,7 @@ class _TitleInput extends ViewModelWidget<CreateReplyDialogModel> {
         decoration: InputDecoration(
           border: const OutlineInputBorder(borderSide: BorderSide()),
           contentPadding: formPadding,
-          labelText: 'タイトル *',
+          labelText: 'タイトル',
           hintText: '挨拶',
           hintStyle: hintTextStyle,
         ),
@@ -102,50 +120,50 @@ class _TextInput extends ViewModelWidget<CreateReplyDialogModel> {
   }
 }
 
-class _ActionInput extends ViewModelWidget<CreateReplyDialogModel> {
-  const _ActionInput({
-    Key? key,
-    required this.screenSize,
-  }) : super(key: key);
+// class _ActionInput extends ViewModelWidget<CreateReplyDialogModel> {
+//   const _ActionInput({
+//     Key? key,
+//     required this.screenSize,
+//   }) : super(key: key);
 
-  final Size screenSize;
+//   final Size screenSize;
 
-  @override
-  Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
-    return Container(
-      constraints: BoxConstraints(maxWidth: screenSize.width * 0.4),
-      child: TextFormField(
-        controller: viewModel.actionInputController,
-        onFieldSubmitted: viewModel.addAction,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(borderSide: BorderSide()),
-          contentPadding: formPadding,
-          labelText: '選択肢',
-          hintText: 'はい',
-          hintStyle: hintTextStyle,
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
+//     return Container(
+//       constraints: BoxConstraints(maxWidth: screenSize.width * 0.4),
+//       child: TextFormField(
+//         controller: viewModel.actionInputController,
+//         onFieldSubmitted: viewModel.addAction,
+//         decoration: InputDecoration(
+//           border: const OutlineInputBorder(borderSide: BorderSide()),
+//           contentPadding: formPadding,
+//           labelText: '選択肢',
+//           hintText: 'はい',
+//           hintStyle: hintTextStyle,
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class _ChoiceChip extends ViewModelWidget<CreateReplyDialogModel> {
-  final Choice choice;
+// class _ChoiceChip extends ViewModelWidget<CreateReplyDialogModel> {
+//   final Choice choice;
 
-  const _ChoiceChip({Key? key, required this.choice}) : super(key: key);
+//   const _ChoiceChip({Key? key, required this.choice}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
-    return Container(
-      margin: const EdgeInsets.all(4.0),
-      child: Chip(
-        label: Text(choice.text),
-        deleteIcon: const Icon(Icons.close, size: 12),
-        onDeleted: () => viewModel.deleteAction(choice),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
+//     return Container(
+//       margin: const EdgeInsets.all(4.0),
+//       child: Chip(
+//         label: Text(choice.text),
+//         deleteIcon: const Icon(Icons.close, size: 12),
+//         onDeleted: () => viewModel.deleteAction(choice),
+//       ),
+//     );
+//   }
+// }
 
 class _CancelButton extends ViewModelWidget<CreateReplyDialogModel> {
   const _CancelButton({

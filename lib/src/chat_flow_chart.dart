@@ -27,6 +27,15 @@ class ChatFlowChart extends ViewModelWidget<HomeViewModel> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ReplyBox(reply: reply, maxWidth: width),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   children: reply.choices
+            //       .map((Choice choice) => ChoiceBox(
+            //             choice: choice,
+            //             maxWidth: width / reply.choices.length,
+            //           ))
+            //       .toList(),
+            // ),
             ChatFlowChart(currentReply: reply, maxWidth: width),
           ]);
     }).toList();
@@ -34,12 +43,18 @@ class ChatFlowChart extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    final childrenReplies =
-        filterChildrenReplies(viewModel.replies, parentId: currentReply.id);
+    final childrenReplies = filterChildrenReplies(
+      viewModel.replies,
+      parentId: currentReply.id,
+    );
+
     final childrenWidth = maxWidth / (childrenReplies.length + 1);
 
-    final childrenWidgets =
-        childrenRepliesWidgets(childrenReplies, childrenWidth);
+    final childrenWidgets = childrenRepliesWidgets(
+      childrenReplies,
+      childrenWidth,
+    );
+
     childrenWidgets.add(PlusBox(
       parentId: currentReply.id,
       maxWidth: childrenWidth,
