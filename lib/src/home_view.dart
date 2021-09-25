@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import '../services_locator.dart';
 import 'create_reply_dialog.dart';
 import 'services/navigation.dart';
+import 'reply_row.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -18,17 +19,9 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(title: const Text('チャットボットデザインナー')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              'counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        child: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (context, _) => const ReplyRow(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
