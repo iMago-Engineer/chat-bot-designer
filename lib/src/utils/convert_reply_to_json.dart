@@ -1,6 +1,6 @@
 import 'package:chat_bot_designer/src/models/choice.dart';
 
-import 'models/reply.dart';
+import '../models/reply.dart';
 
 String turnToJson(Map<Reply, Map<String, Reply>> edges) {
   // algorithm
