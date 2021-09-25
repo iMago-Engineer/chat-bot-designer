@@ -2,12 +2,12 @@ import 'package:chat_bot_designer/src/models/choice.dart';
 
 import '../models/reply.dart';
 
-String turnToJson(Map<Reply, Map<String, Reply>> edges) {
+String convertReplyMapToJson(Map<Reply, Map<String, Reply>> edges) {
   // algorithm
   Map<String, dynamic> content = {};
   content["start"] = _createOnePart(edges.keys.first, edges.keys.first.choices);
   for (var edge in edges.entries) {
-    edge.key.choices?.forEach((action) {
+    edge.key.choices.forEach((action) {
       content["${edge.key.title}[${action.text}]"] = _createOnePart(
           edge.value[action.text], edge.value[action.text]?.choices);
     });
