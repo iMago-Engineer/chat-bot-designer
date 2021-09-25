@@ -168,3 +168,9 @@ const completedTextStyle =
 ///
 const inCompletedTextStyle =
     TextStyle(fontWeight: FontWeight.bold, color: Colors.black54);
+
+/// Color Theme
+
+Color baseColor = const Color(0xFFF5F8FA);
+Color iconColor = const Color(0xFFC2CBDA);
+Color textColor = const Color(0xFF8090AC);
