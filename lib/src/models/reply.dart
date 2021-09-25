@@ -3,7 +3,7 @@ import 'choice.dart';
 class Reply {
   final int id;
   final int? parentId;
-  final ReplyType type;
+  ReplyType type;
   final String trigger;
   final String text;
   final String? title;
