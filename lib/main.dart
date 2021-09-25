@@ -15,12 +15,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = ThemeData(
+      primaryColor: const Color(0xff06C755),
+      primarySwatch: Colors.blue,
+    );
     return MaterialApp(
       title: 'チャットボットデザインナー',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: appTheme,
       navigatorKey: servicesLocator<NavigationService>().navigatorKey,
       home: const HomeView(),
     );

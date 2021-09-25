@@ -15,18 +15,21 @@ class HomeView extends StatelessWidget {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) => Scaffold(
-        appBar: AppBar(title: const Text('チャットボットデザインナー'), actions: <Widget>[
-          ElevatedButton(
-            child: const Text("ダウンロード"),
-            onPressed: () {
-              // TODO: create here!
-              String replyMessage =
-                  '{ "None": [{"type": "text","text": "メニューから選択してください。"},], }';
-              String script = createPythonScript(replyMessage);
-              downloadFile(script);
-            },
-          )
-        ]),
+        appBar: AppBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            title: const Text('チャットボットデザインナー'),
+            actions: <Widget>[
+              ElevatedButton(
+                child: const Text("ダウンロード"),
+                onPressed: () {
+                  // TODO: create here!
+                  String replyMessage =
+                      '{ "None": [{"type": "text","text": "メニューから選択してください。"},], }';
+                  String script = createPythonScript(replyMessage);
+                  downloadFile(script);
+                },
+              )
+            ]),
         body: Center(
           child: ListView.builder(
             itemCount: 1,

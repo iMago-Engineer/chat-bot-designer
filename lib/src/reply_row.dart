@@ -40,7 +40,7 @@ class ReplyBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green,
+      color: Theme.of(context).primaryColor,
       height: 80,
       width: 80,
       child: Align(
@@ -59,7 +59,7 @@ class ReplyBoxWithPlus extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Container(
-      color: Colors.green,
+      color: Theme.of(context).primaryColor,
       height: 80,
       width: 80,
       child: IconButton(
