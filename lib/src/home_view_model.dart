@@ -79,10 +79,6 @@ class HomeViewModel extends BaseViewModel {
     )
   ];
 
-  // TODO: repliesInListToMap
-  Map<Reply, Map<String, Reply>> test = {};
-  get jsonReply => convertReplyMapToJson(test);
-
   void addReply(DraftReply draftReply, int parentId) {
     final parentReply =
         replies.where((element) => element.id == parentId).first;
