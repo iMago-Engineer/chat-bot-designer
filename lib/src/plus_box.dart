@@ -7,9 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class PlusBox extends ViewModelWidget<HomeViewModel> {
+  final int parentId;
   final double maxWidth;
 
-  const PlusBox({Key? key, required this.maxWidth}) : super(key: key);
+  const PlusBox({
+    Key? key,
+    required this.parentId,
+    required this.maxWidth,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Container(
@@ -30,7 +35,7 @@ class PlusBox extends ViewModelWidget<HomeViewModel> {
             );
 
             if (userInput != null) {
-              viewModel.addReply(userInput);
+              viewModel.addReply(userInput, parentId);
             }
           },
         ),
