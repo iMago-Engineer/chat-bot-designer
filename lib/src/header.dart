@@ -13,7 +13,9 @@ class Header extends ViewModelWidget<HomeViewModel> {
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Container(
       padding: const EdgeInsets.all(24.0),
-      color: baseColor,
+      decoration: BoxDecoration(
+          color: baseColor,
+          border: Border(bottom: BorderSide(color: borderColor, width: 3))),
       height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

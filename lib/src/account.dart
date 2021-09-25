@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 
 import 'margin_box.dart';
 
-class Acount extends StatelessWidget {
-  const Acount({Key? key}) : super(key: key);
+class Account extends StatelessWidget {
+  const Account({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
     return Container(
-      color: baseColor,
+      decoration: BoxDecoration(
+          border: Border(right: BorderSide(color: borderColor, width: 3))),
       width: screenSize.width * 0.25,
       height: screenSize.height - 100,
       child: Column(
@@ -19,25 +20,25 @@ class Acount extends StatelessWidget {
         children: [
           horizontalMargin32(),
           Text(
-            'Acount',
+            'Account',
             style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: titleColor),
+                fontSize: 32, fontWeight: FontWeight.bold, color: titleColor),
           ),
           horizontalMargin16(),
           Icon(
             Icons.account_circle,
-            size: 120,
+            size: 160,
             color: iconColor,
           ),
           horizontalMargin20(),
           Text(
             'NAME',
-            style: TextStyle(fontSize: 17, color: textColor),
+            style: TextStyle(fontSize: 24, color: textColor),
           ),
           horizontalMargin16(),
           Text(
-            'e-mail',
-            style: TextStyle(fontSize: 15, color: textColor),
+            'iqlab@imago.mobi',
+            style: TextStyle(fontSize: 18, color: textColor),
           ),
           horizontalMargin44(),
           const ProjectList()
