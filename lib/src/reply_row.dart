@@ -1,3 +1,6 @@
+import 'package:chat_bot_designer/services_locator.dart';
+import 'package:chat_bot_designer/src/create_reply_dialog.dart';
+import 'package:chat_bot_designer/src/services/navigation.dart';
 import 'package:flutter/material.dart';
 
 class ReplyRow extends StatelessWidget {
@@ -46,7 +49,18 @@ class ReplyBoxWithPlus extends StatelessWidget {
       child: IconButton(
         iconSize: 30,
         color: Colors.white,
-        onPressed: () {},
+        onPressed: () async {
+          final newReplyOrNull = await showDialog(
+            context: servicesLocator<NavigationService>().currentContext!,
+            builder: (context) => const CreateReplyDialog(),
+          );
+
+          if (newReplyOrNull == null) {
+            print('null');
+          } else {
+            print(newReplyOrNull);
+          }
+        },
         icon: const Icon(Icons.add_circle_outline),
       ),
     );
