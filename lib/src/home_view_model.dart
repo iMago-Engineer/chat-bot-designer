@@ -1,7 +1,6 @@
 import 'package:chat_bot_designer/src/models/choice.dart';
 import 'package:chat_bot_designer/src/models/draft_reply.dart';
 import 'package:chat_bot_designer/src/models/reply.dart';
-import 'package:chat_bot_designer/src/utils/convert_reply_to_json.dart';
 import 'package:stacked/stacked.dart';
 
 // final testData = [
@@ -91,6 +90,7 @@ class HomeViewModel extends BaseViewModel {
       trigger: draftReply.trigger,
       title: draftReply.title,
       text: draftReply.text,
+      choices: [],
     );
 
     replies.add(newReply);

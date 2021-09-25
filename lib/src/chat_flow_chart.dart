@@ -27,15 +27,6 @@ class ChatFlowChart extends ViewModelWidget<HomeViewModel> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ReplyBox(reply: reply, maxWidth: width),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //   children: reply.choices
-            //       .map((Choice choice) => ChoiceBox(
-            //             choice: choice,
-            //             maxWidth: width / reply.choices.length,
-            //           ))
-            //       .toList(),
-            // ),
             ChatFlowChart(currentReply: reply, maxWidth: width),
           ]);
     }).toList();

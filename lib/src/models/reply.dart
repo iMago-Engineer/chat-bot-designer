@@ -14,9 +14,9 @@ class Reply {
     required this.type,
     required this.text,
     required this.trigger,
+    required this.choices,
     this.parentId,
     this.title,
-    this.choices = const <Choice>[],
   });
 
   @override
