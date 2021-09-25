@@ -25,6 +25,13 @@ String convertReplyMapToJson(Map<Reply, Map<String, Reply>> replyMap) {
     }
   }
 
+  content['None'] = [
+    {
+      'type': 'text',
+      'text': 'それに答えることができません',
+    },
+  ];
+
   return json.encode(content);
 }
 
@@ -35,6 +42,8 @@ List<Map<String, dynamic>>? _createOnePart(Reply? reply) {
   switch (reply.type) {
     case ReplyType.template:
       if (reply.choices.isEmpty) return null;
+      if (reply.title == null) return null;
+      if (reply.title!.isEmpty) return null;
 
       return [
         {
@@ -42,7 +51,7 @@ List<Map<String, dynamic>>? _createOnePart(Reply? reply) {
           'altText': 'this is a button template',
           'template': {
             'type': 'buttons',
-            'title': reply.title,
+            'title': reply.title!,
             'text': reply.text,
             'actions': _createActionPart(reply),
           },

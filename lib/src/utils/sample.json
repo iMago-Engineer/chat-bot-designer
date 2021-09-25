@@ -5,67 +5,44 @@
       "altText": "this is a button template",
       "template": {
         "type": "buttons",
-        "title": null,
-        "text": "0",
+        "title": "None",
+        "text": "None",
         "actions": [
-          { "type": "message", "label": "a", "text": "[a]" },
-          { "type": "message", "label": "b", "text": "[b]" }
+          { "type": "message", "label": "おはよう", "text": "None[おはよう]" }
         ]
       }
     }
   ],
-  "[a]": [
+  "None[おはよう]": [
     {
       "type": "template",
       "altText": "this is a button template",
       "template": {
         "type": "buttons",
-        "title": "",
-        "text": "a",
+        "title": "おはよう",
+        "text": "酒飲む？",
         "actions": [
-          { "type": "message", "label": "c", "text": "[c]" },
-          { "type": "message", "label": "e", "text": "[e]" }
+          { "type": "message", "label": "はい", "text": "おはよう[はい]" },
+          { "type": "message", "label": "いいえ", "text": "おはよう[いいえ]" }
         ]
       }
     }
   ],
-  "[b]": [
+  "おはよう[はい]": [
     {
       "type": "template",
       "altText": "this is a button template",
       "template": {
         "type": "buttons",
-        "title": "",
-        "text": "b",
-        "actions": [{ "type": "message", "label": "d", "text": "[d]" }]
+        "title": "はい",
+        "text": "何飲む？",
+        "actions": [
+          { "type": "message", "label": "黒霧", "text": "はい[黒霧]" }
+        ]
       }
     }
   ],
-  "[c]": [
-    {
-      "type": "template",
-      "altText": "this is a button template",
-      "template": {
-        "type": "buttons",
-        "title": "",
-        "text": "c",
-        "actions": [{ "type": "message", "label": "g", "text": "[g]" }]
-      }
-    }
-  ],
-  "[e]": [{ "type": "text", "text": "e" }],
-  "[d]": [
-    {
-      "type": "template",
-      "altText": "this is a button template",
-      "template": {
-        "type": "buttons",
-        "title": "",
-        "text": "d",
-        "actions": [{ "type": "message", "label": "f", "text": "[f]" }]
-      }
-    }
-  ],
-  "[g]": [{ "type": "text", "text": "g" }],
-  "[f]": [{ "type": "text", "text": "f" }]
+  "おはよう[いいえ]": [{ "type": "text", "text": "えらい" }],
+  "はい[黒霧]": [{ "type": "text", "text": "おお！" }],
+  "None": [{ "type": "text", "text": "それに答えることができません" }]
 }
