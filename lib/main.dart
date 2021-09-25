@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'src/home_view.dart';
+import 'services_locator.dart';
+import 'src/services/navigation.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  await setupServiceLocator();
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -15,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      navigatorKey: servicesLocator<NavigationService>().navigatorKey,
       home: const HomeView(),
     );
   }

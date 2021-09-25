@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../services_locator.dart';
+import 'create_reply_dialog.dart';
+import 'services/navigation.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
@@ -9,14 +13,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +25,25 @@ class _HomeViewState extends State<HomeView> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              'counter',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () async {
+          final newReplyOrNull = await showDialog(
+            context: servicesLocator<NavigationService>().currentContext!,
+            builder: (context) => const CreateReplyDialog(),
+          );
+
+          if (newReplyOrNull == null) {
+            print('null');
+          } else {
+            print(newReplyOrNull);
+          }
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
