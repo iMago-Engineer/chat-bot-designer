@@ -51,7 +51,7 @@ class Header extends ViewModelWidget<HomeViewModel> {
               verticalMargin96(),
               Text('Flow Chart',
                   style: TextStyle(
-                    color: textColor,
+                    color: Theme.of(context).primaryColor,
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   )),
@@ -64,7 +64,7 @@ class Header extends ViewModelWidget<HomeViewModel> {
               verticalMargin28(),
               Text('Messaging API',
                   style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: textColor,
                       fontSize: 18.0,
                       fontWeight: FontWeight.normal)),
               verticalMargin28(),
