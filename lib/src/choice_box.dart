@@ -15,12 +15,21 @@ class ChoiceBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(maxWidth: maxWidth),
-      height: 48,
       margin: const EdgeInsets.symmetric(vertical: 2),
       color: Colors.transparent,
-      child: Align(
-        alignment: Alignment.center,
-        child: Text(choice.text),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: Text(choice.text),
+          ),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: Icon(Icons.arrow_drop_down, color: Colors.black, size: 32),
+          ),
+        ],
       ),
     );
   }
