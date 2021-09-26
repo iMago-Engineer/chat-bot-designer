@@ -72,10 +72,13 @@ class DialogWithTwoButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Dialog(
         shape: _defaultDialogShape,
         elevation: _defaultElevation,
         backgroundColor: _defaultBackgroundColor,
+        insetPadding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.20),
         child: Stack(
           children: <Widget>[
             Container(
