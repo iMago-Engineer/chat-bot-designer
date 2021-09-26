@@ -60,7 +60,8 @@ class _TriggerInput extends ViewModelWidget<CreateReplyDialogModel> {
             border: const OutlineInputBorder(borderSide: BorderSide()),
             contentPadding: formPadding,
             labelText: '* トリガーとなるメッセージ',
-            labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+            floatingLabelStyle:
+                TextStyle(color: Theme.of(context).primaryColor),
             hintText: 'トリガーメッセージが送られてきた時に返信する',
             hintStyle: const TextStyle(color: Colors.grey),
             focusedBorder: OutlineInputBorder(
@@ -90,7 +91,8 @@ class _TitleInput extends ViewModelWidget<CreateReplyDialogModel> {
             border: const OutlineInputBorder(borderSide: BorderSide()),
             contentPadding: formPadding,
             labelText: '見出し',
-            labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+            floatingLabelStyle:
+                TextStyle(color: Theme.of(context).primaryColor),
             hintText: '',
             hintStyle: const TextStyle(color: Colors.grey),
             focusedBorder: OutlineInputBorder(
@@ -122,7 +124,8 @@ class _TextInput extends ViewModelWidget<CreateReplyDialogModel> {
             border: const OutlineInputBorder(borderSide: BorderSide()),
             contentPadding: formPadding,
             labelText: '* メッセージ',
-            labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+            floatingLabelStyle:
+                TextStyle(color: Theme.of(context).primaryColor),
             hintText: '',
             hintStyle: const TextStyle(color: Colors.grey),
             focusedBorder: OutlineInputBorder(
