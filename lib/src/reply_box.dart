@@ -25,7 +25,8 @@ class ReplyBox extends StatelessWidget {
           color: Colors.blueAccent,
           child: Align(
             alignment: Alignment.center,
-            child: Text(reply.text),
+            child:
+                Text(reply.text, style: const TextStyle(color: Colors.white)),
           ),
         ),
       ],
