@@ -18,16 +18,15 @@ class PlusBox extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Container(
+      color: Colors.white,
       constraints: BoxConstraints(maxWidth: maxWidth),
-      height: 24,
       margin: const EdgeInsets.symmetric(vertical: 2),
-      color: Colors.greenAccent,
       child: Align(
-        alignment: Alignment.center,
+        alignment: Alignment.topCenter,
         child: IconButton(
-          icon: const Icon(Icons.add_circle_outline),
-          iconSize: 30,
-          color: Colors.white,
+          icon: const Icon(Icons.add_circle),
+          iconSize: 50,
+          color: Theme.of(context).primaryColor,
           onPressed: () async {
             final userInput = await showDialog<DraftReply?>(
               context: servicesLocator<NavigationService>().currentContext!,
