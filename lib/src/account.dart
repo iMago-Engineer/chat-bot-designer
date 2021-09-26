@@ -12,9 +12,12 @@ class Account extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-          border: Border(right: BorderSide(color: borderColor, width: 3))),
+        border: Border.all(color: borderColor, width: 2),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      margin: const EdgeInsets.all(10),
       width: screenSize.width * 0.25,
-      height: screenSize.height - 100,
+      height: screenSize.height - 120,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

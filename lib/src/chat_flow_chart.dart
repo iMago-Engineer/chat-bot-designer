@@ -5,6 +5,37 @@ import 'package:chat_bot_designer/src/reply_box.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import 'package:chat_bot_designer/src/style_library.dart';
+import 'package:flutter/widgets.dart';
+import 'home_view_model.dart';
+
+class ChatFlowChartInContainer extends StatelessWidget {
+  final HomeViewModel model;
+
+  const ChatFlowChartInContainer({Key? key, required this.model})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: borderColor, width: 2),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      width: screenSize.width * 0.70,
+      height: screenSize.height - 120,
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(top: 10),
+      child: ChatFlowChart(
+        currentReply: model.replies.first,
+        maxWidth: screenSize.width * 0.60,
+      ),
+    );
+  }
+}
+
 class ChatFlowChart extends ViewModelWidget<HomeViewModel> {
   final Reply currentReply;
   final double maxWidth;

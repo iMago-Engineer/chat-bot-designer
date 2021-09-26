@@ -13,8 +13,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) => Scaffold(
@@ -25,10 +23,7 @@ class HomeView extends StatelessWidget {
             Row(
               children: [
                 const Account(),
-                ChatFlowChart(
-                  currentReply: viewModel.replies.first,
-                  maxWidth: screenSize.width * 0.75,
-                ),
+                ChatFlowChartInContainer(model: viewModel)
               ],
             )
           ],
