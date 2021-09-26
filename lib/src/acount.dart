@@ -94,6 +94,16 @@ class ProjectIcon extends StatelessWidget {
           color: selected
               ? Colors.green.withOpacity(0.35)
               : const Color(0xffF5F8FA).withOpacity(0.35),
+          boxShadow: selected
+              ? [
+                  BoxShadow(
+                    color: Colors.green.withOpacity(0.2),
+                    spreadRadius: 3,
+                    blurRadius: 10,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ]
+              : [],
         ),
         child: Container(
           width: 80,
