@@ -22,7 +22,10 @@ class ReplyBox extends StatelessWidget {
           constraints: BoxConstraints(maxWidth: maxWidth),
           height: 48,
           margin: const EdgeInsets.symmetric(vertical: 2),
-          color: Colors.blueAccent,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.blueAccent,
+          ),
           child: Align(
             alignment: Alignment.center,
             child:
