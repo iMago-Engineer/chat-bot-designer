@@ -15,22 +15,37 @@ class ReplyBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final showTitle = reply.title != null && reply.title!.isNotEmpty;
+
     return Column(
       children: [
         ChoiceBox(choice: Choice(text: reply.trigger), maxWidth: maxWidth),
         Container(
-          constraints: BoxConstraints(maxWidth: maxWidth),
-          height: 48,
+          constraints: BoxConstraints(
+            minWidth: maxWidth,
+            maxWidth: maxWidth,
+            minHeight: 48,
+          ),
           margin: const EdgeInsets.symmetric(vertical: 2),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.white,
             border: Border.all(color: Theme.of(context).primaryColor, width: 2),
           ),
-          child: Align(
-            alignment: Alignment.center,
-            child:
-                Text(reply.text, style: const TextStyle(color: Colors.black)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (showTitle)
+                Text(
+                  reply.title!,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              Text(reply.text, style: const TextStyle(color: Colors.black)),
+            ],
           ),
         ),
       ],
