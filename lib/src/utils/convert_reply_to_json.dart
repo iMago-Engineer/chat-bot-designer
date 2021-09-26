@@ -17,7 +17,8 @@ String convertReplyMapToJson(Map<Reply, Map<String, Reply>> replyMap) {
 
         // User が送ってきたものに対する返信が定義されている時だけ生成する
         if (partialContent != null) {
-          final title = entry.key.title ?? '';
+          final title =
+              entry.key.title!.isNotEmpty ? entry.key.title : entry.key.text;
 
           content['$title[${choice.text}]'] = partialContent;
         }
@@ -73,7 +74,7 @@ List<Map<String, dynamic>>? _createOnePart(Reply? reply) {
 }
 
 List<dynamic> _createActionPart(Reply reply) {
-  final formattedTitle = reply.title ?? '';
+  final formattedTitle = reply.title!.isNotEmpty ? reply.title! : reply.text;
 
   return reply.choices.map((Choice choice) {
     return {
