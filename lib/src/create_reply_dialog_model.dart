@@ -33,12 +33,12 @@ class CreateReplyDialogModel extends BaseViewModel {
 
   Future<void> createNewReply() async {
     if (trigger.isEmpty) {
-      SnackbarService.showSnackbarWithErrorMessage('「どんな返事が来たか？」が必要ですよ');
+      SnackbarService.showSnackbarWithErrorMessage('「トリガーとなるメッセージ」が必要ですよ');
       return;
     }
 
     if (text.isEmpty) {
-      SnackbarService.showSnackbarWithErrorMessage('本文が必要ですよ');
+      SnackbarService.showSnackbarWithErrorMessage('「メッセージ」が必要ですよ');
       return;
     }
 

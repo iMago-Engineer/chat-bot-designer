@@ -16,7 +16,7 @@ class CreateReplyDialog extends StatelessWidget {
     return ViewModelBuilder<CreateReplyDialogModel>.reactive(
       viewModelBuilder: () => CreateReplyDialogModel(),
       builder: (context, viewModel, child) => DialogWithTwoButtons(
-        title: 'どう返信しますか？',
+        title: 'メッセージの作成',
         body: Form(
           child: Column(
             children: [
@@ -55,8 +55,8 @@ class _TriggerInput extends ViewModelWidget<CreateReplyDialogModel> {
         decoration: InputDecoration(
           border: const OutlineInputBorder(borderSide: BorderSide()),
           contentPadding: formPadding,
-          labelText: 'どんな返信が来た？ *',
-          hintText: 'はい',
+          labelText: '* トリガーとなるメッセージ',
+          hintText: 'トリガーメッセージが送られてきた時に返信する',
           hintStyle: hintTextStyle,
         ),
       ),
@@ -82,8 +82,8 @@ class _TitleInput extends ViewModelWidget<CreateReplyDialogModel> {
         decoration: InputDecoration(
           border: const OutlineInputBorder(borderSide: BorderSide()),
           contentPadding: formPadding,
-          labelText: 'タイトル',
-          hintText: '挨拶',
+          labelText: '見出し',
+          hintText: '',
           hintStyle: hintTextStyle,
         ),
       ),
@@ -111,59 +111,14 @@ class _TextInput extends ViewModelWidget<CreateReplyDialogModel> {
         decoration: InputDecoration(
           border: const OutlineInputBorder(borderSide: BorderSide()),
           contentPadding: formPadding,
-          labelText: '本文 *',
-          hintText: 'こんにちは',
+          labelText: '* メッセージ',
+          hintText: '',
           hintStyle: hintTextStyle,
         ),
       ),
     );
   }
 }
-
-// class _ActionInput extends ViewModelWidget<CreateReplyDialogModel> {
-//   const _ActionInput({
-//     Key? key,
-//     required this.screenSize,
-//   }) : super(key: key);
-
-//   final Size screenSize;
-
-//   @override
-//   Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
-//     return Container(
-//       constraints: BoxConstraints(maxWidth: screenSize.width * 0.4),
-//       child: TextFormField(
-//         controller: viewModel.actionInputController,
-//         onFieldSubmitted: viewModel.addAction,
-//         decoration: InputDecoration(
-//           border: const OutlineInputBorder(borderSide: BorderSide()),
-//           contentPadding: formPadding,
-//           labelText: '選択肢',
-//           hintText: 'はい',
-//           hintStyle: hintTextStyle,
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class _ChoiceChip extends ViewModelWidget<CreateReplyDialogModel> {
-//   final Choice choice;
-
-//   const _ChoiceChip({Key? key, required this.choice}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
-//     return Container(
-//       margin: const EdgeInsets.all(4.0),
-//       child: Chip(
-//         label: Text(choice.text),
-//         deleteIcon: const Icon(Icons.close, size: 12),
-//         onDeleted: () => viewModel.deleteAction(choice),
-//       ),
-//     );
-//   }
-// }
 
 class _CancelButton extends ViewModelWidget<CreateReplyDialogModel> {
   const _CancelButton({
