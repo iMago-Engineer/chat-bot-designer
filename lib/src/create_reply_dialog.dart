@@ -1,3 +1,4 @@
+import 'package:chat_bot_designer/src/margin_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
@@ -23,7 +24,9 @@ class CreateReplyDialog extends StatelessWidget {
               Column(
                 children: [
                   _TriggerInput(screenSize: screenSize),
+                  horizontalMargin20(),
                   _TitleInput(screenSize: screenSize),
+                  horizontalMargin20(),
                   _TextInput(screenSize: screenSize),
                 ],
               ),
@@ -50,15 +53,18 @@ class _TriggerInput extends ViewModelWidget<CreateReplyDialogModel> {
     return Container(
       constraints: BoxConstraints(maxWidth: screenSize.width * 0.4),
       child: TextFormField(
+        cursorColor: Theme.of(context).primaryColor,
         controller: viewModel.triggerInputController,
         onChanged: viewModel.setTrigger,
         decoration: InputDecoration(
-          border: const OutlineInputBorder(borderSide: BorderSide()),
-          contentPadding: formPadding,
-          labelText: '* トリガーとなるメッセージ',
-          hintText: 'トリガーメッセージが送られてきた時に返信する',
-          hintStyle: hintTextStyle,
-        ),
+            border: const OutlineInputBorder(borderSide: BorderSide()),
+            contentPadding: formPadding,
+            labelText: '* トリガーとなるメッセージ',
+            labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+            hintText: 'トリガーメッセージが送られてきた時に返信する',
+            hintStyle: const TextStyle(color: Colors.grey),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Theme.of(context).primaryColor))),
       ),
     );
   }
@@ -78,14 +84,17 @@ class _TitleInput extends ViewModelWidget<CreateReplyDialogModel> {
       constraints: BoxConstraints(maxWidth: screenSize.width * 0.4),
       child: TextFormField(
         controller: viewModel.titleInputController,
+        cursorColor: Theme.of(context).primaryColor,
         onChanged: viewModel.setTitle,
         decoration: InputDecoration(
-          border: const OutlineInputBorder(borderSide: BorderSide()),
-          contentPadding: formPadding,
-          labelText: '見出し',
-          hintText: '',
-          hintStyle: hintTextStyle,
-        ),
+            border: const OutlineInputBorder(borderSide: BorderSide()),
+            contentPadding: formPadding,
+            labelText: '見出し',
+            labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+            hintText: '',
+            hintStyle: const TextStyle(color: Colors.grey),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Theme.of(context).primaryColor))),
       ),
     );
   }
@@ -105,16 +114,19 @@ class _TextInput extends ViewModelWidget<CreateReplyDialogModel> {
       constraints: BoxConstraints(maxWidth: screenSize.width * 0.4),
       child: TextFormField(
         controller: viewModel.textInputController,
+        cursorColor: Theme.of(context).primaryColor,
         minLines: 1,
         maxLines: 10,
         onChanged: viewModel.setText,
         decoration: InputDecoration(
-          border: const OutlineInputBorder(borderSide: BorderSide()),
-          contentPadding: formPadding,
-          labelText: '* メッセージ',
-          hintText: '',
-          hintStyle: hintTextStyle,
-        ),
+            border: const OutlineInputBorder(borderSide: BorderSide()),
+            contentPadding: formPadding,
+            labelText: '* メッセージ',
+            labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+            hintText: '',
+            hintStyle: const TextStyle(color: Colors.grey),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Theme.of(context).primaryColor))),
       ),
     );
   }
@@ -129,14 +141,17 @@ class _CancelButton extends ViewModelWidget<CreateReplyDialogModel> {
   Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
     return OutlinedButton(
       onPressed: viewModel.cancel,
-      child: const Text(
-        'キャンセル',
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      child: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text(
+          'キャンセル',
+          style: TextStyle(fontSize: 16),
+        ),
       ),
       style: outlinedButtonStyle(
-        primaryColor: Colors.black,
-        shape: const StadiumBorder(),
-      ),
+          primaryColor: Colors.black,
+          shape: const StadiumBorder(),
+          minWidth: 150),
     );
   }
 }
@@ -150,14 +165,18 @@ class _CreateButton extends ViewModelWidget<CreateReplyDialogModel> {
   Widget build(BuildContext context, CreateReplyDialogModel viewModel) {
     return OutlinedButton(
       onPressed: viewModel.createNewReply,
-      child: const Text(
-        '確定',
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      child: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text(
+          '確定',
+          style: TextStyle(fontSize: 16),
+        ),
       ),
       style: outlinedButtonStyle(
-        primaryColor: Theme.of(context).primaryColor,
-        shape: const StadiumBorder(),
-      ),
+          primaryColor: Colors.white,
+          backgroundColor: Theme.of(context).primaryColor,
+          shape: const StadiumBorder(),
+          minWidth: 150),
     );
   }
 }

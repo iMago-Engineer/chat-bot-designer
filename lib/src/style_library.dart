@@ -109,10 +109,18 @@ ButtonStyle raisedButtonStyle({
 /// )
 /// ```
 /// 必要に応じて、この関数に変数を加える
-ButtonStyle outlinedButtonStyle({Color? primaryColor, OutlinedBorder? shape}) {
+ButtonStyle outlinedButtonStyle({
+  Color? backgroundColor,
+  Color? primaryColor,
+  OutlinedBorder? shape,
+  double? minHeight,
+  double? minWidth,
+}) {
+  final minimumSize = Size(minWidth ?? 88, minHeight ?? 36);
   return OutlinedButton.styleFrom(
+    backgroundColor: backgroundColor ?? Colors.white,
     primary: primaryColor ?? Colors.black87,
-    minimumSize: const Size(88, 36),
+    minimumSize: minimumSize,
     padding: const EdgeInsets.symmetric(horizontal: 16),
     shape: shape ??
         const RoundedRectangleBorder(

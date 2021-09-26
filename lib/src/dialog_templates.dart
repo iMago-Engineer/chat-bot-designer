@@ -78,46 +78,39 @@ class DialogWithTwoButtons extends StatelessWidget {
         shape: _defaultDialogShape,
         elevation: _defaultElevation,
         backgroundColor: _defaultBackgroundColor,
-        insetPadding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.20),
-        child: Stack(
-          children: <Widget>[
-            Container(
-                decoration: _defaultDialogBoxDecoration,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min, // To make the card compact
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 20,
-                      ),
-                      child: Text(
-                        title,
-                        style: dialogTextStyle(color: Colors.black),
-                      ),
+        child: Container(
+            decoration: _defaultDialogBoxDecoration,
+            width: screenSize.width * 0.5,
+            child: Column(
+              mainAxisSize: MainAxisSize.min, // To make the card compact
+              children: <Widget>[
+                horizontalMargin32(),
+                Text(
+                  title,
+                  style: dialogTextStyle(color: Colors.black),
+                ),
+                horizontalMargin32(),
+                if (body != null) body!,
+                horizontalMargin28(),
+                const Divider(),
+                horizontalMargin20(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: leftButton,
                     ),
-                    if (body != null) body!,
-                    horizontalMargin12(),
-                    const Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: leftButton,
-                        ),
-                        verticalMargin28(),
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: rightButton,
-                        )
-                      ],
-                    ),
-                    horizontalMargin8()
+                    verticalMargin28(),
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: rightButton,
+                    )
                   ],
-                ))
-          ],
-        ));
+                ),
+                horizontalMargin28()
+              ],
+            )));
   }
 }
 
@@ -143,4 +136,4 @@ const _defaultElevation = 0.0;
 
 /// dialogTextStyle
 TextStyle dialogTextStyle({required Color color}) =>
-    TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: color);
+    TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: color);

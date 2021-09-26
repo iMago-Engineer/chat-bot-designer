@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = ThemeData(
-        primaryColor: const Color(0xff06C755),
+        primaryColor: const Color(0xFF02C755),
         primarySwatch: Colors.blue,
         textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme));
     return MaterialApp(
