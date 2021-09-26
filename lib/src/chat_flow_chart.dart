@@ -70,16 +70,16 @@ class ChatFlowChart extends ViewModelWidget<HomeViewModel> {
       parentId: currentReply.id,
     );
 
-    final childrenWidth = maxWidth / (childrenReplies.length + 1);
+    final unitWidth = maxWidth / (childrenReplies.length * 4 + 1);
 
     final childrenWidgets = childrenRepliesWidgets(
       childrenReplies,
-      childrenWidth,
+      unitWidth * 4,
     );
 
     childrenWidgets.add(PlusBox(
       parentId: currentReply.id,
-      maxWidth: childrenWidth,
+      maxWidth: unitWidth,
     ));
 
     return Row(
