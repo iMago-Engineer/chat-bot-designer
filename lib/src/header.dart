@@ -51,7 +51,7 @@ class Header extends ViewModelWidget<HomeViewModel> {
               verticalMargin96(),
               Text('Dashboard',
                   style: TextStyle(
-                      color: textColor,
+                      color: Theme.of(context).primaryColor,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold)),
               verticalMargin28(),
