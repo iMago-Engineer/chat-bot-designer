@@ -18,7 +18,6 @@ class PlusBox extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Container(
-      color: Colors.white,
       constraints: BoxConstraints(maxWidth: maxWidth),
       margin: const EdgeInsets.symmetric(vertical: 2),
       child: Align(

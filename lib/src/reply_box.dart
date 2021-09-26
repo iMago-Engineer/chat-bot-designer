@@ -24,12 +24,13 @@ class ReplyBox extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 2),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Colors.blueAccent,
+            color: Colors.white,
+            border: Border.all(color: Theme.of(context).primaryColor, width: 2),
           ),
           child: Align(
             alignment: Alignment.center,
             child:
-                Text(reply.text, style: const TextStyle(color: Colors.white)),
+                Text(reply.text, style: const TextStyle(color: Colors.black)),
           ),
         ),
       ],
