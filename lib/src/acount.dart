@@ -86,12 +86,15 @@ class ProjectIcon extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         width: 150,
         height: 150,
+        margin: const EdgeInsets.all(3),
         decoration: BoxDecoration(
-            border: Border.all(
-                color: const Color(0xffC5CAD7).withOpacity(0.35), width: 0.5),
-            color: selected
-                ? Colors.green.withOpacity(0.35)
-                : const Color(0xffF5F8FA).withOpacity(0.35)),
+          border: Border.all(
+              color: const Color(0xffC5CAD7).withOpacity(0.35), width: 0.5),
+          borderRadius: BorderRadius.circular(10),
+          color: selected
+              ? Colors.green.withOpacity(0.35)
+              : const Color(0xffF5F8FA).withOpacity(0.35),
+        ),
         child: Container(
           width: 80,
           height: 80,
